@@ -29,7 +29,7 @@
 | จำกัดบัญชี | `GOOGLE_ALLOWED_EMAIL` | เว้นว่างได้หากต้องการให้ทุกบัญชี Google ที่ยืนยันอีเมลเข้าใช้ |
 | LINE | `LINE_CHANNEL_SECRET`, `LINE_CHANNEL_ACCESS_TOKEN` | ตั้ง webhook URL เป็น `https://โดเมนของคุณ/api/integrations/line/webhook`; สร้างรหัส 6 หลักจากหน้าตั้งค่าแล้วส่งให้บอตเพื่อเชื่อมแบบ 1 บัญชีเว็บต่อ 1 LINE; ข้อความ `เติมน้ำมัน 30 1200 54321` หมายถึงลิตร ราคา และเลขไมล์ |
 | FlowTrack | `FLOWTRACK_BASE_URL`, `FLOWTRACK_API_KEY`, `FLOWTRACK_FUEL_PATH` | adapter คาดหวัง JSON array ของ `{id, filled_at, liters, total_baht, odometer_km, station}`; ปรับ mapping หาก API จริงต่างออกไป |
-| OCR | `GEMINI_API_KEY`, `GEMINI_MODEL` หรือ `GOOGLE_VISION_API_KEY` | Gemini วิเคราะห์ภาพเป็นข้อมูลแบบมีโครงสร้าง ส่วน Vision ใช้ OCR สำรอง เมื่อไม่ได้ตั้งค่าคีย์ยังอัปโหลดภาพและสร้างร่างให้กรอกเองได้ |
+| AI ตรวจรูป | `GEMINI_API_KEY`, `GEMINI_MODEL` | Gemini วิเคราะห์ภาพงาน Grab และใบเสร็จน้ำมันเป็นข้อมูลแบบมีโครงสร้าง ภาพจากเว็บและ LINE จะถูกเก็บเป็นร่างให้ตรวจสอบก่อนบันทึกจริง |
 
 `APP_ORIGIN` และ `GOOGLE_REDIRECT_URI` ต้องตรงกับที่เปิดใช้งานจริง ใช้ HTTPS บนเซิร์ฟเวอร์จริง และตั้ง `DEMO_MODE=false` ก่อนให้ผู้อื่นเข้าถึง ห้ามเผยแพร่ `.env` หรือ connection string
 
