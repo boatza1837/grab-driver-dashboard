@@ -1,0 +1,4 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { openDb,id } from '../backend/db.js';
+test('migrations and ownership constraints work',()=>{const db=openDb(':memory:');const a=id(),b=id();db.prepare('INSERT INTO users(id,email,name) VALUES(?,?,?)').run(a,'a@test.local','A');db.prepare('INSERT INTO users(id,email,name) VALUES(?,?,?)').run(b,'b@test.local','B');db.prepare('INSERT INTO driving_sessions(id,user_id,start_at,end_at) VALUES(?,?,?,?)').run(id(),a,'2026-10-08T23:00:00Z','2026-10-09T01:00:00Z');assert.equal(db.prepare('SELECT COUNT(*) n FROM driving_sessions WHERE user_id=?').get(b).n,0);assert.throws(()=>db.prepare('INSERT INTO driving_sessions(id,user_id,start_at,end_at) VALUES(?,?,?,?)').run(id(),a,'2026-10-09T02:00:00Z','2026-10-09T01:00:00Z'));db.close()});
