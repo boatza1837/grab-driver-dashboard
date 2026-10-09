@@ -27,9 +27,9 @@
 |---|---|---|
 | Google Login | `GOOGLE_CLIENT_ID`, `GOOGLE_CLIENT_SECRET`, `GOOGLE_REDIRECT_URI` | ลงทะเบียน redirect URI ใน Google Cloud Console; session cookie มีอายุ 22 วัน |
 | จำกัดบัญชี | `GOOGLE_ALLOWED_EMAIL` | เว้นว่างได้หากต้องการให้ทุกบัญชี Google ที่ยืนยันอีเมลเข้าใช้ |
-| LINE | `LINE_CHANNEL_SECRET`, `LINE_CHANNEL_ACCESS_TOKEN` | ตั้ง webhook URL เป็น `https://โดเมนของคุณ/api/integrations/line/webhook`; ใส่ LINE User ID ในหน้าตั้งค่าเพื่อจับคู่บัญชี; ข้อความ `เติมน้ำมัน 30 1200 54321` หมายถึงลิตร ราคา และเลขไมล์ |
+| LINE | `LINE_CHANNEL_SECRET`, `LINE_CHANNEL_ACCESS_TOKEN` | ตั้ง webhook URL เป็น `https://โดเมนของคุณ/api/integrations/line/webhook`; สร้างรหัส 6 หลักจากหน้าตั้งค่าแล้วส่งให้บอตเพื่อเชื่อมแบบ 1 บัญชีเว็บต่อ 1 LINE; ข้อความ `เติมน้ำมัน 30 1200 54321` หมายถึงลิตร ราคา และเลขไมล์ |
 | FlowTrack | `FLOWTRACK_BASE_URL`, `FLOWTRACK_API_KEY`, `FLOWTRACK_FUEL_PATH` | adapter คาดหวัง JSON array ของ `{id, filled_at, liters, total_baht, odometer_km, station}`; ปรับ mapping หาก API จริงต่างออกไป |
-| OCR | `GOOGLE_VISION_API_KEY` | เมื่อไม่ได้ตั้งค่า ยังอัปโหลดภาพและสร้างร่างให้กรอกเองได้ |
+| OCR | `GEMINI_API_KEY`, `GEMINI_MODEL` หรือ `GOOGLE_VISION_API_KEY` | Gemini วิเคราะห์ภาพเป็นข้อมูลแบบมีโครงสร้าง ส่วน Vision ใช้ OCR สำรอง เมื่อไม่ได้ตั้งค่าคีย์ยังอัปโหลดภาพและสร้างร่างให้กรอกเองได้ |
 
 `APP_ORIGIN` และ `GOOGLE_REDIRECT_URI` ต้องตรงกับที่เปิดใช้งานจริง ใช้ HTTPS บนเซิร์ฟเวอร์จริง และตั้ง `DEMO_MODE=false` ก่อนให้ผู้อื่นเข้าถึง ห้ามเผยแพร่ `.env` หรือ connection string
 
